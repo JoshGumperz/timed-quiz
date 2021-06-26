@@ -49,8 +49,13 @@ p {
     padding: 5px;
     margin: 10px;
     width: 100px;
+    border: #ffff;
     border-radius: 8px;
     background-color: rgb(15, 111, 255);
     color: #ffff;
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(91, 156, 255);
 }
