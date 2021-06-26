@@ -1,6 +1,10 @@
 var questionEL = document.querySelector("#question")
 var choicesEl = document.querySelector(".choices")
 var timerEl = document.querySelector("#time-left");
+var option1El = document.querySelector("#option-1")
+var option2El = document.querySelector("#option-2")
+var option3El = document.querySelector("#option-3")
+var option4El = document.querySelector("#option-4")
 
 var score = 0
 var userAnswer
@@ -32,7 +36,7 @@ var answers = {
     ],
     question5Answers: [
         "console.log",
-        "termina/bash",
+        "terminal/bash",
         "for loops",
         "javascript"
     ],
@@ -40,6 +44,11 @@ var answers = {
 var correctAnsers = [answers.question1Answers[2], answers.question2Answers[2], answers.question3Answers[3], answers.question4Answers[1], answers.question5Answers[0]]
 var availableQuestions = questions.slice();
 var timeLeft = 60;
+
+function startQuiz() {
+    timer()
+    displayQuestion(answers.question1Answers[0], answers.question1Answers[1], answers.question1Answers[2], answers.question1Answers[3])
+}
 
 function newQuestion() {
     var currentQuestion = availableQuestions[0];
@@ -53,8 +62,16 @@ function timer() {
             timeLeft--; 
             }
         else {
-            timerEl.textContent = "";
+            timerEl.textContent = "0";
             clearInterval(timeInterval);
             }
         }, 1000);
-    } 
+} 
+function displayQuestion(setOption1, setOption2, setOption3, setOption4) {
+    questionEL.textContent = newQuestion();
+    option1El.textContent = setOption1
+    option2El.textContent = setOption2
+    option3El.textContent = setOption3
+    option4El.textContent = setOption4
+}
+startQuiz();
