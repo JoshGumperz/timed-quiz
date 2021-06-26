@@ -17,3 +17,9 @@
 #time-left {
     font-weight: normal;
 }
+
+.indicator {
+    color: rgb(143, 143, 143);
+    font-style: italic;
+    display: none;
+}

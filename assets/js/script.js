@@ -5,6 +5,8 @@ var option1El = document.querySelector("#option-1")
 var option2El = document.querySelector("#option-2")
 var option3El = document.querySelector("#option-3")
 var option4El = document.querySelector("#option-4")
+var correctIndicator = document.querySelector("#correct")
+var incorrectIndicator = document.querySelector("#incorrect")
 
 var score = 0
 var userAnswer
@@ -41,13 +43,19 @@ var answers = {
         "javascript"
     ],
 }
-var correctAnsers = [answers.question1Answers[2], answers.question2Answers[2], answers.question3Answers[3], answers.question4Answers[1], answers.question5Answers[0]]
+var correctAnswers = [answers.question1Answers[2], answers.question2Answers[2], answers.question3Answers[3], answers.question4Answers[1], answers.question5Answers[0]]
 var availableQuestions = questions.slice();
 var timeLeft = 60;
 
 function startQuiz() {
     timer()
     displayQuestion(answers.question1Answers[0], answers.question1Answers[1], answers.question1Answers[2], answers.question1Answers[3])
+    // Running into a problem here, this event listener should take effect whenever any of the buttons are clikced, but it only works when the first button is clicked.
+    choicesEl.addEventListener("click", function(event) {
+        var element = event.target;
+        correctIndicator.setAttribute("style", "display: initial;")
+
+      });
 }
 
 function newQuestion() {
