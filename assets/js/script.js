@@ -38,3 +38,23 @@ var answers = {
     ],
 }
 var correctAnsers = [answers.question1Answers[2], answers.question2Answers[2], answers.question3Answers[3], answers.question4Answers[1], answers.question5Answers[0]]
+var availableQuestions = questions.slice();
+var timeLeft = 60;
+
+function newQuestion() {
+    var currentQuestion = availableQuestions[0];
+    availableQuestions.splice(0, 1);
+    return currentQuestion
+}
+function timer() {
+    var timeInterval = setInterval(function () {
+        if (timeLeft > 0) {
+            timerEl.textContent = timeLeft;
+            timeLeft--; 
+            }
+        else {
+            timerEl.textContent = "";
+            clearInterval(timeInterval);
+            }
+        }, 1000);
+    } 
