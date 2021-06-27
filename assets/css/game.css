@@ -18,13 +18,15 @@
     font-weight: normal;
 }
 
-#choice-container {
+.choice-container {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .indicator {
     color: rgb(143, 143, 143);
     font-style: italic;
-    display: none;
+    visibility: hidden;
 }

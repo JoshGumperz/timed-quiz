@@ -1,5 +1,5 @@
 var questionEL = document.querySelector("#question")
-var choicesEl = document.querySelector("#choice-container")
+var choicesEl = document.querySelector(".choice-container")
 var timerEl = document.querySelector("#time-left");
 var option1El = document.querySelector("#option-1")
 var option2El = document.querySelector("#option-2")
@@ -9,84 +9,100 @@ var correctIndicator = document.querySelector("#correct")
 var incorrectIndicator = document.querySelector("#incorrect")
 
 var score = 0
-var userAnswer
-var questions = ["Commonly used data types do NOT include:", "The condition within an if/else statement is enclosed within ____:", "Arrays in JavaScript can be used to store:", "String values must be stored within ____ when being declared as variables:", "A very useful tool used during development and debugging for printing content out to the debugger is:"]
-var answers = {
-    question1Answers: [
-        "strings",
-        "booleans",
-        "alerts",
-        "numbers"
-    ],
-    question2Answers: [
-        "quotes",
-        "curly brackets",
-        "parentheses",
-        "square brackets"
-    ],
-    question3Answers: [
-        "numbers and strings",
-        "other arrays",
-        "booleans",
-        "all of the above"
-    ],
-    question4Answers: [
-        "commas",
-        "quotes",
-        "curly brackets",
-        "parentheses"
-    ],
-    question5Answers: [
-        "console.log",
-        "terminal/bash",
-        "for loops",
-        "javascript"
-    ],
-}
-var correctAnswers = [answers.question1Answers[2], answers.question2Answers[2], answers.question3Answers[3], answers.question4Answers[1], answers.question5Answers[0]]
+var questions = [
+    {
+        question: "Commonly used data types do NOT include:",
+        answers: [
+            "strings",
+            "booleans",
+            "alerts",
+            "numbers"
+        ],
+        correctAnswer: "alerts"
+    },
+    {
+        question: "The condition within an if/else statement is enclosed within ____:",
+        answers: [
+            "quotes",
+            "curly brackets",
+            "parentheses",
+            "square brackets"
+        ],
+        correctAnswer: "parentheses"
+    },
+    {
+        question: "Arrays in JavaScript can be used to store:",
+        answers: [
+            "numbers and strings",
+            "other arrays",
+            "booleans",
+            "all of the above"
+        ],
+        correctAnswer: "all of the above"
+    },
+    {
+        question: "String values must be stored within ____ when being declared as variables:",
+        answers: [
+            "commas",
+            "quotes",
+            "curly brackets",
+            "parentheses"
+        ],
+        correctAnswer: "quotes"
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content out to the debugger is:",
+        answers: [
+            "console.log",
+            "terminal/bash",
+            "for loops",
+            "javascript"
+        ],
+        correctAnswer: "console.log"
+    }
+]
 var availableQuestions = questions.slice();
 var timeLeft = 60;
 
 function startQuiz() {
     timer()
-    displayQuestion(answers.question1Answers[0], answers.question1Answers[1], answers.question1Answers[2], answers.question1Answers[3])
-    choicesEl.addEventListener("click", function(event) {
+    displayQuestion()
+    choicesEl.addEventListener("click", function (event) {
         var element = event.target;
-        if (element.matches("button") === true) {
-            if(correctAnswers.includes[element]) {
+        if (element.matches("button")) {
+            if (element.textContent === availableQuestions[0].correctAnswer) {
                 score++
-                correctIndicator.setAttribute("style", "display: initial;")
+                correctIndicator.setAttribute("style", "visibility: initial")
+                setTimeout(function () { correctIndicator.setAttribute("style", "visibility: hidden") }, 500)
+            }
+            else {
+                timeLeft -= 5
+                incorrectIndicator.setAttribute("style", "visibility: initial")
+                setTimeout(function () { incorrectIndicator.setAttribute("style", "visibility: hidden") }, 500)
             }
         }
-
-      });
-}
-function newQuestion() {
-    var currentQuestion = availableQuestions[0];
-    availableQuestions.splice(0, 1);
-    return currentQuestion
+        displayQuestion()
+    });
 }
 function timer() {
     var timeInterval = setInterval(function () {
         if (timeLeft > 0) {
             timerEl.textContent = timeLeft;
-            timeLeft--; 
-            }
+            timeLeft--;
+        }
         else {
             timerEl.textContent = "0";
             clearInterval(timeInterval);
-            }
-        }, 1000);
-} 
-function displayQuestion(setOption1, setOption2, setOption3, setOption4) {
-    questionEL.textContent = newQuestion();
-    option1El.textContent = setOption1
-    option2El.textContent = setOption2
-    option3El.textContent = setOption3
-    option4El.textContent = setOption4
-    option1El.value = setOption1
-    option2El.value = setOption2
-    option3El.value = setOption3
-    option4El.value = setOption4
+        }
+    }, 1000);
+}
+function displayQuestion() {
+    questionEL.textContent = availableQuestions[0].question;
+    option1El.textContent = availableQuestions[0].answers[0]
+    option2El.textContent = availableQuestions[0].answers[1]
+    option3El.textContent = availableQuestions[0].answers[2]
+    option4El.textContent = availableQuestions[0].answers[3]
+    availableQuestions.splice(0, 1);
 }
 startQuiz();
+
