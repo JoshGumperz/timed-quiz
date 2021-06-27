@@ -67,6 +67,7 @@ var timeLeft = 60;
 function startQuiz() {
     timer()
     displayQuestion()
+    console.log(availableQuestions[0].correctAnswer)
     choicesEl.addEventListener("click", function (event) {
         var element = event.target;
         if (element.matches("button")) {
@@ -81,7 +82,10 @@ function startQuiz() {
                 setTimeout(function () { incorrectIndicator.setAttribute("style", "visibility: hidden") }, 500)
             }
         }
-        displayQuestion()
+        if (availableQuestions.length > 0 && timeLeft > 0) {
+            availableQuestions.splice(0, 1);
+            displayQuestion()
+        }
     });
 }
 function timer() {
@@ -102,7 +106,6 @@ function displayQuestion() {
     option2El.textContent = availableQuestions[0].answers[1]
     option3El.textContent = availableQuestions[0].answers[2]
     option4El.textContent = availableQuestions[0].answers[3]
-    availableQuestions.splice(0, 1);
 }
 startQuiz();
 
