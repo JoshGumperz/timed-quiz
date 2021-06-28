@@ -71,7 +71,7 @@ function startQuiz() {
         var element = event.target;
         if (element.matches("button")) {
             if (element.textContent === availableQuestions[0].correctAnswer) {
-                score++
+                score += 10
                 correctIndicator.setAttribute("style", "visibility: initial")
                 setTimeout(function () { correctIndicator.setAttribute("style", "visibility: hidden") }, 500)
             }

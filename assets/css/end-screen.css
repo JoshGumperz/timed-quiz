@@ -1,0 +1,18 @@
+.input-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+main p {
+    margin: 5px;
+}
+
+#name-enter {
+    height: 25px;
+}
+
+#sumbit-button {
+    border-radius: 5px;
+}
