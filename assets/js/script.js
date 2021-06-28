@@ -112,10 +112,8 @@ function displayQuestion() {
 }
 
 function endQuiz() {
-    localStorage.setItem("Score", score)
+    localStorage.setItem("Score", JSON.stringify(score))
     return window.location.assign("../html/end-screen.html")
 }
 startQuiz();
-
-
 

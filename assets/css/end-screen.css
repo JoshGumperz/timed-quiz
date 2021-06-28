@@ -1,3 +1,11 @@
+main p {
+    margin: 5px;
+}
+
+#final-score {
+    font-weight: bold;
+}
+
 .input-field {
     display: flex;
     flex-direction: row;
@@ -5,12 +13,18 @@
     align-items: center;
 }
 
-main p {
-    margin: 5px;
-}
-
 #name-enter {
     height: 25px;
+}
+
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;  
+}
+:-ms-input-placeholder {  
+   font-style: italic; 
 }
 
 #sumbit-button {
