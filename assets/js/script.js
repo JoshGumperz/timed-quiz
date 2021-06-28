@@ -67,7 +67,6 @@ var timeLeft = 60;
 function startQuiz() {
     timer()
     displayQuestion()
-    console.log(availableQuestions[0].correctAnswer)
     choicesEl.addEventListener("click", function (event) {
         var element = event.target;
         if (element.matches("button")) {
@@ -82,9 +81,12 @@ function startQuiz() {
                 setTimeout(function () { incorrectIndicator.setAttribute("style", "visibility: hidden") }, 500)
             }
         }
-        if (availableQuestions.length > 0 && timeLeft > 0) {
-            availableQuestions.splice(0, 1);
+        availableQuestions.splice(0, 1);
+        if (availableQuestions.length > 0) {
             displayQuestion()
+        }
+        else if (availableQuestions.length <= 0) {
+            setTimeout(function () { return endQuiz() }, 500)
         }
     });
 }
@@ -97,6 +99,7 @@ function timer() {
         else {
             timerEl.textContent = "0";
             clearInterval(timeInterval);
+            endQuiz();
         }
     }, 1000);
 }
@@ -107,5 +110,12 @@ function displayQuestion() {
     option3El.textContent = availableQuestions[0].answers[2]
     option4El.textContent = availableQuestions[0].answers[3]
 }
+
+function endQuiz() {
+    localStorage.setItem("Score", score)
+    return window.location.assign("../html/end-screen.html")
+}
 startQuiz();
+
+
 
