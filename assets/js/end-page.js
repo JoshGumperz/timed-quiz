@@ -3,9 +3,27 @@ var inputEl = document.querySelector("#name-enter")
 var submitBtn = document.querySelector("#sumbit-button")
 var finalScore = document.querySelector("#final-score")
 
+submitBtn.addEventListener("click", function (event) {
+    event.preventDefault
+    saveScore()
+    changePage()
+  });
+
 function displayScore () {
     scoreDisplay = JSON.parse(localStorage.getItem("Score"))
     finalScore.textContent = scoreDisplay
 }
-displayScore()
 
+function saveScore() {
+    var userInitials = inputEl.value.trim();
+    if (userInitials === "") {
+      return changePage()
+    }
+    storedInitials = localStorage.setItem("Initials", JSON.stringify(userInitials))
+}
+
+function changePage() {
+    return window.location.assign("../html/high-scores.html")
+}
+
+displayScore()
