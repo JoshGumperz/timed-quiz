@@ -1,11 +1,6 @@
-var highScores = document.querySelector(".high-scores-list")
+var highScoresList = document.querySelector(".high-scores-list")
 var homeButton = document.querySelector("#home-button")
 var clearButton = document.querySelector("#clear-button")
-var listItem1 = document.querySelector("#list-item1")
-var listItem2 = document.querySelector("#list-item2")
-var listItem3 = document.querySelector("#list-item3")
-var listItem4 = document.querySelector("#list-item4")
-var listItem5 = document.querySelector("#list-item5")
 var lastScore = JSON.parse(localStorage.getItem("Score"))
 var highScores = JSON.parse(localStorage.getItem("highScores")) || []
 var storedInitials = JSON.parse(localStorage.getItem("Initials"))
@@ -41,24 +36,30 @@ function saveScores() {
 }
 
 function addScore() {
-    saveScores()
-    savedScores = JSON.parse(localStorage.getItem("highScores"))
-    savedScores.join("")
-    listItem1.textContent = savedScores[0].initials + " - " + savedScores[0].score
-    listItem2.textContent = savedScores[1].initials + " - " + savedScores[1].score
-    listItem3.textContent = savedScores[2].initials + " - " + savedScores[2].score
-    listItem4.textContent = savedScores[3].initials + " - " + savedScores[3].score
-    listItem5.textContent = savedScores[4].initials + " - " + savedScores[4].score
+    highScores = JSON.parse(localStorage.getItem("highScores"))
+    for (var i = 0; i < highScores.length; i++) {
+        highScores.join("")
+        newScore = document.createElement("li")
+        highScoresList.appendChild(newScore)
+        newScore.textContent = highScores[i].initials + " - " + highScores[i].score
+    }
 
 }
 
 clearButton.addEventListener("click", function () {
     localStorage.clear("highScores")
-    listItem1.textContent = ""
-    listItem1.textContent = ""
-    listItem1.textContent = ""
-    listItem1.textContent = ""
+    highScoresList.removeChild(newScore)
     location.reload()
 })
 
-addScore()
+function checkScore () {
+    saveScores()
+    highScores = JSON.parse(localStorage.getItem("highScores"))
+    if (highScores) {
+        addScore()
+    }
+    else {
+        return
+    }
+}
+checkScore()

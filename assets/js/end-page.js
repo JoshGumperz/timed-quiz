@@ -2,6 +2,7 @@ var inputContainer = document.querySelector(".input-field")
 var inputEl = document.querySelector("#name-enter")
 var submitBtn = document.querySelector("#sumbit-button")
 var finalScore = document.querySelector("#final-score")
+var errorMessage = document.querySelector("#error-message")
 
 var lastScore
 
@@ -25,8 +26,9 @@ function displayScore () {
 
 function saveInitials() {
   var userInitials = inputEl.value.trim();
-  if (userInitials === "") {
-    return changePage()
+  if (userInitials === "" || !userInitials) {
+    errorMessage.setAttribute("style", "display: initial;")
+    saveInitials()
   }
   storedInitials = localStorage.setItem("Initials", JSON.stringify(userInitials))
 }

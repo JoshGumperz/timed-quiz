@@ -1,3 +1,11 @@
 ol li{
     padding: 0px 0px 3px 5px;
 }
+
+#high-scores-header {
+    margin: 5px;
+}
+
+.button {
+    margin: auto;
+}

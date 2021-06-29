@@ -6,6 +6,12 @@ main p {
     font-weight: bold;
 }
 
+#error-message {
+    color: rgb(219, 0, 44);
+    font-style: italic;
+    display: none;
+}
+
 .input-field {
     display: flex;
     flex-direction: row;
