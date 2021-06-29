@@ -3,25 +3,27 @@ var inputEl = document.querySelector("#name-enter")
 var submitBtn = document.querySelector("#sumbit-button")
 var finalScore = document.querySelector("#final-score")
 
+var lastScore
+
 // had to impliment a function to sumbit when "Enter" key is pressed manually, cause using a form in html was causing an error.
 inputContainer.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
-      saveScore()
+      saveInitials()
       changePage()
   }
 })
 
-submitBtn.addEventListener("click", function (event) {
-  saveScore()
+submitBtn.addEventListener("click", function () {
+  saveInitials()
   changePage()
 });
 
 function displayScore () {
-  scoreDisplay = JSON.parse(localStorage.getItem("Score"))
-  finalScore.textContent = scoreDisplay
+  lastScore = JSON.parse(localStorage.getItem("Score"))
+  finalScore.textContent = lastScore
 }
 
-function saveScore() {
+function saveInitials() {
   var userInitials = inputEl.value.trim();
   if (userInitials === "") {
     return changePage()
