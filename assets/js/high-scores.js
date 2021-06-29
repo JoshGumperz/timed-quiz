@@ -14,26 +14,30 @@ var storedInitials = JSON.parse(localStorage.getItem("Initials"))
 
 
 function saveScores() {
-    var displayScore = {
-        score: lastScore,
-        initials: storedInitials
-    }
-    if(!storedInitials) {
+    if (!storedInitials || storedInitials === "") {
         return
     }
-    else if (highScores.length < 5) {
-      highScores.push(displayScore)
-    }
-    else if (highScores.length = 5) {
-        for (var i = 0; i < highScores.length; i++) {
-            if (displayScore.score >= highScores[i]) {
-                highScores.splice(i, 1, displayScore)
+    else {
+        var displayScore = {
+            score: lastScore,
+            initials: storedInitials
+        }
+        if (highScores.length < 5) {
+            highScores.push(displayScore)
+        }
+        else if (highScores.length = 5) {
+            for (var i = 0; i < highScores.length; i++) {
+                if (displayScore.score >= highScores[i].score) {
+                    highScores.splice(4, 1, displayScore)
+                    {break}
+                }
             }
         }
+        highScores.sort(function (a, b) {
+            return b.score - a.score
+        });
+        localStorage.setItem("highScores", JSON.stringify(highScores))
     }
-    highScores.sort(function (a, b) {
-        return b.score - a.score });
-    localStorage.setItem("highScores", JSON.stringify(highScores))
 }
 
 function addScore() {
@@ -45,15 +49,16 @@ function addScore() {
     listItem3.textContent = savedScores[2].initials + " - " + savedScores[2].score
     listItem4.textContent = savedScores[3].initials + " - " + savedScores[3].score
     listItem5.textContent = savedScores[4].initials + " - " + savedScores[4].score
+
 }
 
-clearButton.addEventListener("click", function() {
-   localStorage.clear("highScores")
-   listItem1.textContent = ""
-   listItem1.textContent = ""
-   listItem1.textContent = ""
-   listItem1.textContent = ""
-   location.reload()
+clearButton.addEventListener("click", function () {
+    localStorage.clear("highScores")
+    listItem1.textContent = ""
+    listItem1.textContent = ""
+    listItem1.textContent = ""
+    listItem1.textContent = ""
+    location.reload()
 })
 
 addScore()
