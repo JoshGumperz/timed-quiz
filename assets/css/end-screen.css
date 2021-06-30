@@ -1,17 +1,18 @@
+/* style the main text */
 main p {
     margin: 5px;
 }
-
+/* set final score number to display as bold */
 #final-score {
     font-weight: bold;
 }
-
+/* style error message, and set it to display: none; so that it doesn't display unless user doesn't input anything in the initials input field */
 #error-message {
     color: rgb(219, 0, 44);
     font-style: italic;
     display: none;
 }
-
+/* position input field */
 .input-field {
     display: flex;
     flex-direction: row;
@@ -22,7 +23,7 @@ main p {
 #name-enter {
     height: 25px;
 }
-
+/* set placeholder text to be italic, but when user types in the input, what they type will have a normal font-style */
 ::-webkit-input-placeholder {
    font-style: italic;
 }
@@ -32,7 +33,7 @@ main p {
 :-ms-input-placeholder {  
    font-style: italic; 
 }
-
+/* reduce the amount of pixels on the rounded corners for the submit button */
 #sumbit-button {
     border-radius: 5px;
 }

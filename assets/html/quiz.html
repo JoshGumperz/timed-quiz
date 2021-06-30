@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/quiz.css">
     <title>Timed Quiz</title>
 </head>
 <body>
     <div class="container">
+        <!-- set default text for time-left to display 60 cause timeLeft is set to 59 in the js so we still want the user to see 60 when page loads initially -->
         <div class="timer">Timer: <span id="time-left">60</span></div>
-        <main id="game" class="game-container">
+        <main id="quiz" class="quiz-container">
             <h1 id="question">Question</h1>
             <div class="choice-container">
             <button class="button" id="option-1"></button>

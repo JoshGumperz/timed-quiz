@@ -1,13 +1,15 @@
+/* import font I wanted to use, it's important I linked it here instead of in html cause I wanted to use it on multiple different pages, so linking it here means I didn't need to link it for every single html page */
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
+/* set some default values */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Nunito', sans-serif;
 }
-
+/* style container class */
 .container {
+    /* set container class to take up 100% of the browser/viewport height and width */
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -30,7 +32,9 @@ p {
     text-align: center;
 }
 
+/* style buttons */
 .initial-buttons {
+    /* display buttons on homepage in a row and align them in center */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -38,6 +42,7 @@ p {
 }
 
 .button {
+    /* display all other buttons in columns so they're stacked on top of each other, style them, add max width, use border-radius to make the corners rounded, and use cursor: pointer; to make the cursor turn into a pointer when you hover over one of them */
     font-size: 15px;
     padding: 5px;
     margin: 3px 0px 0px 10px;
@@ -48,7 +53,7 @@ p {
     color: #ffff;
     cursor: pointer;
 }
-
+/* add hover effect on all buttons so color changes when you hover of them */
 .button:hover {
     background-color: rgb(91, 156, 255);
 }
