@@ -15,8 +15,8 @@ Upon initially loading in to the site, you will see this:
 If you then choose to click start, it will start the quiz and the page will change to display the first question:
 ![Screenshot](https://i.imgur.com/z1jjK8w.png)
 Getting an answer correct or incorrect will display a small indicator message to tell you if you got the answer right or not:
-![Screenshot](https://i.imgur.com/g9F5Dzc.png)
-![Screenshot](https://i.imgur.com/Ictwrxx.png)
+![Screenshot](https://i.imgur.com/Qc4FSeq.png)
+![Screenshot](https://i.imgur.com/8jBWf0q.png)
 If the timer were to run out, or if you finish answering all the questions, the page will change again, and you will then be presented with a prompt to enter your initials:
 ![Screenshot](https://i.imgur.com/jQvLEch.png)
 If you tried to proceed without entering your initials you'd encounter a small error message telling you to please enter your initials:
